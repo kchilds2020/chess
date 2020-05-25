@@ -1,399 +1,441 @@
 import React, {useState} from 'react';
 import './App.css';
-import Square from './components/Square'
 import Squares from './components/Squares'
+import Turn from './components/Turn'
 
 function Board() {
 
   const [position, setPosition] = useState([
     [
       {
-        col: 'a',
-        row: 1,
+        chessLocation: 'a1',
+        col: 0,
+        row: 0,
         piece: 'WhiteRook'
       },
       {
-        col: 'b',
-        row: 1,
+        chessLocation: 'b1',
+        col: 1,
+        row: 0,
         piece: 'WhiteKnight'
       },
       {
-        col: 'c',
-        row: 1,
+        chessLocation: 'c1',
+        col: 2,
+        row: 0,
         piece: 'WhiteBishop'
       },
       {
-        col: 'd',
-        row: 1,
+        chessLocation: 'd1',
+        col: 3,
+        row: 0,
         piece: 'WhiteQueen'
       },
       {
-        col: 'e',
-        row: 1,
+        chessLocation: 'e1',
+        col: 4,
+        row: 0,
         piece: 'WhiteKing'
       },
       {
-        col: 'f',
-        row: 1,
+        chessLocation: 'f1',
+        col: 5,
+        row: 0,
         piece: 'WhiteBishop'
       },
       {
-        col: 'g',
-        row: 1,
+        chessLocation: 'g1',
+        col: 6,
+        row: 0,
         piece: 'WhiteKnight'
       },
       {
-        col: 'h',
-        row: 1,
+        chessLocation: 'h1',
+        col: 7,
+        row: 0,
         piece: 'WhiteRook'
       }
     ],
     [
       {
-        col: 'a',
-        row: 2,
+        chessLocation: 'a2',
+        col: 0,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'b',
-        row: 2,
+        chessLocation: 'b2',
+        col: 1,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'c',
-        row: 2,
+        chessLocation: 'c2',
+        col: 2,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'd',
-        row: 2,
+        chessLocation: 'd2',
+        col: 3,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'e',
-        row: 2,
+        chessLocation: 'e2',
+        col: 4,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'f',
-        row: 2,
+        chessLocation: 'f2',
+        col: 5,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'g',
-        row: 2,
+        chessLocation: 'g2',
+        col: 6,
+        row: 1,
         piece: 'WhitePawn'
       },
       {
-        col: 'h',
-        row: 2,
+        chessLocation: 'h2',
+        col: 7,
+        row: 1,
         piece: 'WhitePawn'
       }
     ],
     [
       {
-        col: 'a',
+        chessLocation: 'a3',
+        col: 0,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'b3',
+        col: 1,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'c3',
+        col: 2,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'd3',
+        col: 3,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'e3',
+        col: 4,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'f3',
+        col: 5,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'g3',
+        col: 6,
+        row: 2,
+        piece: ''
+      },
+      {
+        chessLocation: 'h3',
+        col: 7,
+        row: 2,
+        piece: ''
+      }
+    ],
+    [
+      {
+        chessLocation: 'a4',
+        col: 0,
         row: 3,
         piece: ''
       },
       {
-        col: 'b',
+        chessLocation: 'b4',
+        col: 1,
         row: 3,
         piece: ''
       },
       {
-        col: 'c',
+        chessLocation: 'c4',
+        col: 2,
         row: 3,
         piece: ''
       },
       {
-        col: 'd',
+        chessLocation: 'd4',
+        col: 3,
         row: 3,
         piece: ''
       },
       {
-        col: 'e',
+        chessLocation: 'e4',
+        col: 4,
         row: 3,
         piece: ''
       },
       {
-        col: 'f',
+        chessLocation: 'f4',
+        col: 5,
         row: 3,
         piece: ''
       },
       {
-        col: 'g',
+        chessLocation: 'g4',
+        col: 6,
         row: 3,
         piece: ''
       },
       {
-        col: 'h',
+        chessLocation: 'h4',
+        col: 7,
         row: 3,
         piece: ''
       }
     ],
     [
       {
-        col: 'a',
+        chessLocation: 'a5',
+        col: 0,
         row: 4,
         piece: ''
       },
       {
-        col: 'b',
+        chessLocation: 'b5',
+        col: 1,
         row: 4,
         piece: ''
       },
       {
-        col: 'c',
+        chessLocation: 'c5',
+        col: 2,
         row: 4,
         piece: ''
       },
       {
-        col: 'd',
+        chessLocation: 'd5',
+        col: 3,
         row: 4,
         piece: ''
       },
       {
-        col: 'e',
+        chessLocation: 'e5',
+        col: 4,
         row: 4,
         piece: ''
       },
       {
-        col: 'f',
+        chessLocation: 'f5',
+        col: 5,
         row: 4,
         piece: ''
       },
       {
-        col: 'g',
+        chessLocation: 'g5',
+        col: 6,
         row: 4,
         piece: ''
       },
       {
-        col: 'h',
+        chessLocation: 'h5',
+        col: 7,
         row: 4,
         piece: ''
       }
     ],
     [
       {
-        col: 'a',
+        chessLocation: 'a6',
+        col: 0,
         row: 5,
         piece: ''
       },
       {
-        col: 'b',
+        chessLocation: 'b6',
+        col: 1,
         row: 5,
         piece: ''
       },
       {
-        col: 'c',
+        chessLocation: 'c6',
+        col: 2,
         row: 5,
         piece: ''
       },
       {
-        col: 'd',
+        chessLocation: 'd6',
+        col: 3,
         row: 5,
         piece: ''
       },
       {
-        col: 'e',
+        chessLocation: 'e6',
+        col: 4,
         row: 5,
         piece: ''
       },
       {
-        col: 'f',
+        chessLocation: 'f6',
+        col: 5,
         row: 5,
         piece: ''
       },
       {
-        col: 'g',
+        chessLocation: 'g6',
+        col: 6,
         row: 5,
         piece: ''
       },
       {
-        col: 'h',
+        chessLocation: 'h6',
+        col: 7,
         row: 5,
         piece: ''
       }
     ],
     [
       {
-        col: 'a',
+        chessLocation: 'a7',
+        col: 0,
         row: 6,
-        piece: ''
-      },
-      {
-        col: 'b',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'c',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'd',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'e',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'f',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'g',
-        row: 6,
-        piece: ''
-      },
-      {
-        col: 'h',
-        row: 6,
-        piece: ''
-      }
-    ],
-    [
-      {
-        col: 'a',
-        row: 7,
         piece: 'BlackPawn'
       },
       {
-        col: 'b',
-        row: 7,
+        chessLocation: 'b7',
+        col: 1,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'c',
-        row: 7,
+        chessLocation: 'c7',
+        col: 2,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'd',
-        row: 7,
+        chessLocation: 'd7',
+        col: 3,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'e',
-        row: 7,
+        chessLocation: 'e7',
+        col: 4,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'f',
-        row: 7,
+        chessLocation: 'f7',
+        col: 5,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'g',
-        row: 7,
+        chessLocation: 'g7',
+        col: 6,
+        row: 6,
         piece: 'BlackPawn'
       },
       {
-        col: 'h',
-        row: 7,
+        chessLocation: 'h7',
+        col: 7,
+        row: 6,
         piece: 'BlackPawn'
       }
     ],
     [
       {
-        col: 'a',
-        row: 8,
+        chessLocation: 'a8',
+        col: 0,
+        row: 7,
         piece: 'BlackRook'
       },
       {
-        col: 'b',
-        row: 8,
+        chessLocation: 'b8',
+        col: 1,
+        row: 7,
         piece: 'BlackKnight'
       },
       {
-        col: 'c',
-        row: 8,
+        chessLocation: 'c8',
+        col: 2,
+        row: 7,
         piece: 'BlackBishop'
       },
       {
-        col: 'd',
-        row: 8,
+        chessLocation: 'd8',
+        col: 3,
+        row: 7,
         piece: 'BlackQueen'
       },
       {
-        col: 'e',
-        row: 8,
+        chessLocation: 'e8',
+        col: 4,
+        row: 7,
         piece: 'BlackKing'
       },
       {
-        col: 'f',
-        row: 8,
+        chessLocation: 'f8',
+        col: 5,
+        row: 7,
         piece: 'BlackBishop'
       },
       {
-        col: 'g',
-        row: 8,
+        chessLocation: 'g8',
+        col: 6,
+        row: 7,
         piece: 'BlackKnight'
       },
       {
-        col: 'h',
-        row: 8,
+        chessLocation: 'h8',
+        col: 7,
+        row: 7,
         piece: 'BlackRook'
       }
     ]
   ]);
 
+  const [player, setPlayer] = useState('White');
+
   const updateBoard = (oldPosition, newPosition) => {
     let temp = position;
-    console.log(`oldPosition: ${oldPosition}, newPosition: ${newPosition}`);
-    //let currentRank = oldPosition.slice(2);
-    let currentRank = oldPosition.length > 2 ? parseInt(oldPosition.slice(2)) : parseInt(oldPosition.slice(1));
+    let currentColumn = oldPosition.length > 2 ? parseInt(oldPosition.slice(2)) : parseInt(oldPosition.slice(1));
+    let currentRow = parseInt(oldPosition.slice(0,1));
+    let desiredRow = parseInt(newPosition.slice(0,1));
+    let desiredColumn = newPosition.length > 2 ? parseInt(newPosition.slice(2)) : parseInt(newPosition.slice(1));
 
-    let currentFile = oldPosition.slice(0,1);
-    //let desiredRank = newPosition.slice(1);
-    let desiredFile = newPosition.slice(0,1);
-    let desiredRank = newPosition.length > 2 ? newPosition.slice(2) : newPosition.slice(1);
-
-
-    let currentColIndex;
-    let desiredColIndex
-
-    /* const rank = (element) => {
-      element.col === currentFile;
-    }; */
-    temp[parseInt(desiredRank)-1].forEach((element, index) => {
-      if(element.col === desiredFile){
-        desiredColIndex = index;
-      }
-    });
-
-    temp[parseInt(currentRank)-1].forEach((element, index) => {
-      if(element.col === currentFile){
-        currentColIndex = index;
-      }
-    });
-
-    temp[parseInt(desiredRank)-1][desiredColIndex] = {
-      col: desiredFile,
-      row: parseInt(desiredRank),
-      piece: temp[parseInt(currentRank)-1][currentColIndex].piece
-    }
-
-    temp[parseInt(currentRank)-1][currentColIndex] = {
-      col: currentFile,
-      row: parseInt(currentRank),
-      piece: ''
-    }
+    temp[desiredRow][desiredColumn].piece = temp[currentRow][currentColumn].piece;
+    temp[currentRow][currentColumn].piece = '';
 
     setPosition(temp);
-/*     console.log(position);
- */  }
+    console.log(position);
+}
+
+const updatePlayer = () => {
+  //let temp = player === 'White' ? 'Black' : 'White';
+  setPlayer('Black');
+}
 
   return (
-    <div className="Board">
-      <Squares position={position} updateBoard={updateBoard}/>
-
+    <div className="boardContainer">
+      <Turn player={player}/>
+      
+      <div className="Board">
+        <Squares position={position} updateBoard={updateBoard} updatePlayer={updatePlayer}/>
+      </div>
     </div>
   );
 }

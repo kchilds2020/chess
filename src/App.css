@@ -7,23 +7,25 @@ html, body{
 }
 
 .Board{
-  width: 640px;
-  height: 640px;
+  height: 600px;
+  width: 600px;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
 }
 
 .square{
-  width: 80px;
-  height: 80px;
+  width: 12.5%;
+  height: 12.5%;
   display: flex;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 }
 
 .square img{
     cursor: pointer;
+    width: 90%;
+    height:90%;
 }
 
 
@@ -46,3 +48,12 @@ html, body{
 
 }
 
+@media screen and (max-width: 700px){
+  .Board{
+    width: 350px;
+    height: 350px;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

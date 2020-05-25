@@ -12,7 +12,7 @@ export default function Piece({square}){
     if(square.piece !== ''){
         let color = square.piece.slice(0,5);
         let piece = square.piece.slice(5);
-        let img = color === 'White' ? <img src={require(`../images/${square.piece}.png`)} className={`${color} ${piece}`}  id = {`${square.col}:${square.row}`} alt="" draggable="true" onDragStart={drag} /> : <img src={require(`../images/${square.piece}.png`)} className={`${color} ${piece}`} id = {`${square.col}:${square.row}`} alt="" draggable="false" onDragStart={drag} />
+        let img = color === 'White' ? <img src={require(`../images/${square.piece}.png`)} className={`${color} ${piece}`}  id = {`${square.row}:${square.col}`} alt="" draggable="true" onDragStart={drag} /> : <img src={require(`../images/${square.piece}.png`)} className={`${color} ${piece}`} id = {`${square.row}:${square.col}`} alt="" draggable="false" onDragStart={drag} />
         return img;
     }
     else{

@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import Square from './Square'
 
-export default function Squares({position, updateBoard}){
+export default function Squares({position, updateBoard,updatePlayer}){
     console.log(position);
     let odd = true;
     let color;
@@ -19,7 +19,7 @@ export default function Squares({position, updateBoard}){
               row--;
             }
             
-            sqrs.push(<Square key={i} bgrdColor={color} square={position[row][col]} squares={position} updateBoard={updateBoard}/>);
+            sqrs.push(<Square key={i} bgrdColor={color} square={position[row][col]} squares={position} updateBoard={updateBoard} updatePlayer = {updatePlayer}/>);
             col++;
           }
     return sqrs;
