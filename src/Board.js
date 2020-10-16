@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Squares from './components/Squares'
 import Turn from './components/Turn'
@@ -409,6 +409,7 @@ function Board() {
   ]);
 
   const [player, setPlayer] = useState('White');
+  const [change ,setChange] = useState(0);
 
   const updateBoard = (oldPosition, newPosition) => {
     let temp = position;
@@ -421,20 +422,17 @@ function Board() {
     temp[currentRow][currentColumn].piece = '';
 
     setPosition(temp);
+   /*  setChange(change + 1); */
     console.log(position);
-}
-
-const updatePlayer = () => {
-  //let temp = player === 'White' ? 'Black' : 'White';
-  setPlayer('Black');
 }
 
   return (
     <div className="boardContainer">
-      <Turn player={player}/>
+      {/* <Turn player={player}/> */}
+      <h1>{change}</h1>
       
       <div className="Board">
-        <Squares position={position} updateBoard={updateBoard} updatePlayer={updatePlayer}/>
+        <Squares position={position} updateBoard={updateBoard} updatePlayer={setPlayer}/>
       </div>
     </div>
   );

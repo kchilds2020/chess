@@ -3,7 +3,7 @@ import '../App.css';
 import Piece from './Piece';
 
 export default function Square(props){
-    const { bgrdColor, square, squares, updateBoard} = props;
+    const { bgrdColor, square, squares, updateBoard, updatePlayer} = props;
 
     const movePiece = (desiredPosition, piece) => {
         console.log(desiredPosition,piece);
@@ -207,7 +207,13 @@ export default function Square(props){
         let whiteElements = document.getElementsByClassName('White');
         let blackElements = document.getElementsByClassName('Black');
         Array.prototype.forEach.call(whiteElements, element => {
-            element.draggable === true ? element.setAttribute('draggable', false) : element.setAttribute('draggable', true);
+            if(element.draggable === true){
+                element.setAttribute('draggable', false)
+                //updatePlayer("Black");
+            }else{
+                element.setAttribute('draggable', true);
+                //updatePlayer("White");
+            }
         })
     
         Array.prototype.forEach.call(blackElements, element => {
