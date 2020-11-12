@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Squares from './components/Squares'
 import Turn from './components/Turn'
+import Rank from './components/Rank'
 
 function Board() {
 
@@ -432,7 +433,15 @@ function Board() {
       <h1>{change}</h1>
       
       <div className="Board">
-        <Squares position={position} updateBoard={updateBoard} updatePlayer={setPlayer}/>
+        {/* <Squares position={position} updateBoard={updateBoard} updatePlayer={setPlayer}/> */}
+        <Rank starting={8}/>
+        <Rank starting={7}/>
+        <Rank starting={6}/>
+        <Rank starting={5}/>
+        <Rank starting={4}/>
+        <Rank starting={3}/>
+        <Rank starting={2}/>
+        <Rank starting={1}/>
       </div>
     </div>
   );
