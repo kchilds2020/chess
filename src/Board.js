@@ -3,6 +3,7 @@ import './App.css';
 import Squares from './components/Squares'
 import Turn from './components/Turn'
 import Rank from './components/Rank'
+import SquareOnBoard from './components/SquareOnBoard';
 
 function Board() {
 
@@ -411,6 +412,17 @@ function Board() {
 
   const [player, setPlayer] = useState('White');
   const [change ,setChange] = useState(0);
+  const [squares, setSquares] = useState([]);
+
+  useEffect(() => {
+    console.log('test');
+    let temp = [];
+    for(let i = 0; i < 64; i++){
+      temp.push(<SquareOnBoard />);
+    }
+    setSquares(temp);
+    console.log(squares);
+  },[])
 
   const updateBoard = (oldPosition, newPosition) => {
     let temp = position;
@@ -434,14 +446,17 @@ function Board() {
       
       <div className="Board">
         {/* <Squares position={position} updateBoard={updateBoard} updatePlayer={setPlayer}/> */}
-        <Rank starting={8}/>
+        {/* <Rank starting={8}/>
         <Rank starting={7}/>
         <Rank starting={6}/>
         <Rank starting={5}/>
         <Rank starting={4}/>
         <Rank starting={3}/>
         <Rank starting={2}/>
-        <Rank starting={1}/>
+        <Rank starting={1}/> */}
+        {
+          squares
+        }
       </div>
     </div>
   );

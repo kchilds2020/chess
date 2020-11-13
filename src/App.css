@@ -20,19 +20,19 @@ html, body{
   flex-wrap: wrap;
 }
 
-.square{
+/* .square{
   width: 12.5%;
   height: 12.5%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.square img{
+/* .square img{
     cursor: pointer;
     width: 90%;
     height:90%;
-}
+} */
 
 
 
