@@ -1,5 +1,6 @@
 import findObjectAtLocation from './utilities/findObjectAtLocation'
 import whitePawnChecks from './checks/whitePawnChecks'
+import blackPawnChecks from './checks/blackPawnChecks'
 
 const checkValidation = (currentPos, desiredPos, posArr) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, posArr);
@@ -12,6 +13,8 @@ const checkValidation = (currentPos, desiredPos, posArr) => {
     switch(currentObj.piece) {
         case 'white-pawn':
             return whitePawnChecks(currentObj, desiredObj, posArr);
+        case 'black-pawn':
+            return blackPawnChecks(currentObj, desiredObj, posArr);
     } 
 
     return true;

@@ -1,6 +1,7 @@
 import findObjectAtLocation from '../utilities/findObjectAtLocation'
 
 const whitePawnChecks = (currentObj, desiredObj, posArr) => {
+
     //check if pawn goes past three spaces
     if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) > 2)  return false;
     //check if pawn foes backwards
