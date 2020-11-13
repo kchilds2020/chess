@@ -1,33 +1,30 @@
 import React from 'react'
 import styled from 'styled-components' 
+import checkValidation from './checkValidation'
 
-function SquareOnBoard({ position, updateBoard}) {
+function SquareOnBoard({ position, updateBoard, posArr}) {
 
     const drag = (ev) => {
         console.log(ev.target);
       ev.dataTransfer.setData("text", ev.target.id);
     }
     
-    const allowDrop = (ev) => {
-        ev.preventDefault();
-    }
-      
- 
+    const allowDrop = (ev) => ev.preventDefault();
       
     const drop = (ev) => {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        console.log('DATA', data)
-        let piece = document.getElementById(data);
+        //get piece ID and new Square ID and update position array
+        let piece = document.getElementById(ev.dataTransfer.getData("text"));
         let destinationSquare = document.getElementById(ev.target.id);
-        let row = destinationSquare.id.slice(0,1);
-        let col = destinationSquare.length <= 2 ? destinationSquare.id.slice(1) : destinationSquare.id.slice(2);
-
-        console.log(piece, destinationSquare);
-        updateBoard( piece.id.slice(-2), destinationSquare.id);
-        piece.id = `${position.piece}>${row}${col}`; 
         
-    
+        if(checkValidation(piece.id.slice(-2), destinationSquare.id.slice(-2), posArr) === true){
+            updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2));
+
+            //update image id
+            let row = destinationSquare.id.slice(0,1);
+            let col = destinationSquare.id.slice(1);
+            piece.id = `${position.piece}>${row}${col}`; 
+        }
     };
 
     return (

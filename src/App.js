@@ -428,14 +428,14 @@ function App() {
     if(state.pov === 'black'){
       for(let i = 0; i < 8; i++){
         for(let j = 7; j >= 0; j--){
-          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard}/>);
+          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} posArr={state.position}/>);
           count++;
         }
       }
     }else{
       for(let i = 7; i >= 0; i--){
         for(let j = 0; j < 8; j++){
-          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard}/>);
+          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} posArr={state.position}/>);
           count++;
         }
       }
