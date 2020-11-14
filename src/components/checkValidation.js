@@ -3,6 +3,7 @@ import whitePawnChecks from './checks/whitePawnChecks'
 import blackPawnChecks from './checks/blackPawnChecks'
 import whiteRookChecks from './checks/whiteRookChecks';
 import blackRookChecks from './checks/blackRookChecks';
+import whitBishopChecks from './checks/whiteBishopChecks'
 
 const checkValidation = (currentPos, desiredPos, posArr) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, posArr);
@@ -21,6 +22,8 @@ const checkValidation = (currentPos, desiredPos, posArr) => {
             return whiteRookChecks(currentObj, desiredObj, posArr);
         case 'black-rook':
             return blackRookChecks(currentObj, desiredObj, posArr);
+        case 'white-bishop':
+            return whitBishopChecks(currentObj, desiredObj, posArr);
     } 
 
     return true;
