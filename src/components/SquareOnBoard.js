@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components' 
 import checkValidation from './checkValidation'
 
-function SquareOnBoard({ position, updateBoard, posArr}) {
+function SquareOnBoard({ position, updateBoard, posArr, turn}) {
 
     const drag = (ev) => {
         console.log(ev.target);
@@ -29,7 +29,11 @@ function SquareOnBoard({ position, updateBoard, posArr}) {
 
     return (
         <Square style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
-                {position.piece !== '' ? <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag}/> : <></>}
+                {position.piece !== '' ? 
+                    turn === position.piece.slice(0,5) ? 
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag}/> :
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false"/>
+                        : <></>}
         </Square>
     )
 }

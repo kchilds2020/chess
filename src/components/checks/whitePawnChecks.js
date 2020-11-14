@@ -9,7 +9,7 @@ const whitePawnChecks = (currentObj, desiredObj, posArr) => {
 
     //check if pieces are obstructing from moving forward
     if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) <= 2 && parseInt(desiredObj.rank) - parseInt(currentObj.rank) > 0){
-        for(let i = 1; i <= parseInt(desiredObj.rank) - parseInt(currentObj.rank); i++){
+        for(let i = 1; i < parseInt(desiredObj.rank) - parseInt(currentObj.rank); i++){
             let tempObj = findObjectAtLocation(`${currentObj.file}${parseInt(currentObj.rank) + i}`,posArr);
             console.log('TEMP OBJECT', tempObj)
             if(tempObj.piece !== '') return false; 
@@ -25,6 +25,9 @@ const whitePawnChecks = (currentObj, desiredObj, posArr) => {
                 return false;
         }
     }
+
+    if(desiredObj.piece.slice(0,5) === 'white')
+        return false;
 
 
     return true;
