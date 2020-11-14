@@ -6,23 +6,31 @@ const diagonalCollisionChecks = (currentObj, desiredObj, posArr) => {
     let desiredPos = parseInt(desiredObj.rank);
     let currentPos = parseInt(currentObj.rank);
 
+    console.log('current: ', cNum, currentPos, dNum, desiredPos);
+
     //upperRight
     let tempObj
     if(dNum - cNum > 0 && desiredPos -currentPos > 0){
+        console.log('upperright')
         for(let i = 1; i < dNum - cNum; i++){
             tempObj = posArr[currentPos - 1 + i].find(element => element.file === letters[cNum + i])
+            console.log("Temp OBJ", tempObj);
             if(tempObj.piece !== '') return true;
         }
     }
     //upperLeft
     if( cNum - dNum > 0 && desiredPos - currentPos > 0){
+        console.log('upperleft')
         for(let i = 1; i < cNum - dNum; i++){
+            
             tempObj = posArr[currentPos - 1 + i].find(element => element.file === letters[cNum - i])
+            console.log("Temp OBJ", tempObj);
             if(tempObj.piece !== '') return true;
         }
     }
     //lowerLeft
     if(cNum - dNum > 0 && currentPos - desiredPos > 0){
+        console.log('lowerleft')
         for(let i = 1; i < cNum-dNum; i++){
             tempObj = posArr[currentPos - 1 - i].find(element => element.file === letters[cNum - i])
             if(tempObj.piece !== '') return true;
@@ -31,6 +39,7 @@ const diagonalCollisionChecks = (currentObj, desiredObj, posArr) => {
     
     //lowerRight
     if(dNum - cNum > 0 && currentPos - desiredPos > 0){
+        console.log('lowerright')
         for(let i = 1; i < dNum - cNum; i++){
             tempObj = posArr[currentPos - 1 - i].find(element => element.file === letters[cNum + i])
             if(tempObj.piece !== '') return true;
