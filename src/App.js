@@ -3,6 +3,7 @@ import './App.css';
 /* import Board from './Board' */
 import styled from 'styled-components'
 import SquareOnBoard from './components/SquareOnBoard'
+import addMoveToMatchRecord from './components/utilities/addMoveToMatchRecord'
 
 function App() {
  const DARK_COLOR = 'green'
@@ -398,13 +399,15 @@ function App() {
      file: 'h',
      piece: 'black-rook',
      squareColor:`${DARK_COLOR}`
-   }]]
+   }]],
+   matchRecord: []
   })
 
  const [squares, setSquares] = useState([]);
 
+ 
+
  const updateBoard = (currentId, destinationId) =>{
-    console.log("UPDATE BOARD", currentId, destinationId);
     let temp = [...state.position];
     let currentRow = currentId[1] - 1;
     let currentCol = temp[currentRow].findIndex(element => element.file === currentId[0]);
@@ -415,10 +418,9 @@ function App() {
     let destCol = temp[destRow].findIndex(element => element.file === destinationId[0])
     temp[destRow][destCol].piece = piece;
 
-    setState({...state, position: temp});
+    let moves =  addMoveToMatchRecord(piece, destinationId, state.matchRecord);
 
-    console.log(state);
-
+    setState({...state, position: temp, matchRecord: moves});
   }
 
   useEffect(() => {
