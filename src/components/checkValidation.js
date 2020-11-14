@@ -2,6 +2,7 @@ import findObjectAtLocation from './utilities/findObjectAtLocation'
 import whitePawnChecks from './checks/whitePawnChecks'
 import blackPawnChecks from './checks/blackPawnChecks'
 import whiteRookChecks from './checks/whiteRookChecks';
+import blackRookChecks from './checks/blackRookChecks';
 
 const checkValidation = (currentPos, desiredPos, posArr) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, posArr);
@@ -18,6 +19,8 @@ const checkValidation = (currentPos, desiredPos, posArr) => {
             return blackPawnChecks(currentObj, desiredObj, posArr);
         case 'white-rook':
             return whiteRookChecks(currentObj, desiredObj, posArr);
+        case 'black-rook':
+            return blackRookChecks(currentObj, desiredObj, posArr);
     } 
 
     return true;
