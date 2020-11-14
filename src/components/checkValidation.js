@@ -7,6 +7,10 @@ import whiteBishopChecks from './checks/whiteBishopChecks'
 import blackBishopChecks from './checks/blackBishopChecks'
 import whiteQueenChecks from './checks/whiteQueenChecks'
 import blackQueenChecks from './checks/blackQueenChecks'
+import whiteKingChecks from './checks/whiteKingChecks';
+import blackKingChecks from './checks/blackKingChecks';
+import whiteKnightChecks from './checks/whiteKnightChecks';
+import blackKnightChecks from './checks/blackKnightChecks';
 
 const checkValidation = (currentPos, desiredPos, posArr) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, posArr);
@@ -33,6 +37,14 @@ const checkValidation = (currentPos, desiredPos, posArr) => {
             return whiteQueenChecks(currentObj, desiredObj, posArr);
         case 'black-queen':
             return blackQueenChecks(currentObj, desiredObj, posArr);
+        case 'white-king':
+            return whiteKingChecks(currentObj, desiredObj);
+        case 'black-king':
+            return blackKingChecks(currentObj, desiredObj);
+        case 'white-knight':
+            return whiteKnightChecks(currentObj, desiredObj, posArr);
+        case 'black-knight':
+            return blackKnightChecks(currentObj, desiredObj, posArr);
     } 
 
     return true;
