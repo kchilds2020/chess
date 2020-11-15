@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components' 
 import checkValidation from './checkValidation'
 
-function SquareOnBoard({ position, updateBoard, posArr, turn}) {
+function SquareOnBoard({ position, updateBoard, state, setState /*posArr, turn*/}) {
 
     const drag = (ev) => {
         console.log(ev.target);
@@ -17,7 +17,7 @@ function SquareOnBoard({ position, updateBoard, posArr, turn}) {
         let piece = document.getElementById(ev.dataTransfer.getData("text"));
         let destinationSquare = document.getElementById(ev.target.id);
         
-        if(checkValidation(piece.id.slice(-2), destinationSquare.id.slice(-2), posArr) === true){
+        if(checkValidation(piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState) === true){
             updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2));
 
             //update image id
@@ -30,7 +30,7 @@ function SquareOnBoard({ position, updateBoard, posArr, turn}) {
     return (
         <Square style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
                 {position.piece !== '' ? 
-                    turn === position.piece.slice(0,5) ? 
+                    state.turn === position.piece.slice(0,5) ? 
                         <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag}/> :
                         <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false"/>
                         : <></>}

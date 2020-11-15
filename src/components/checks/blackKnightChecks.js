@@ -1,4 +1,4 @@
-const blackKnightChecks = (currentObj, desiredObj, posArr) => {
+const blackKnightChecks = (currentObj, desiredObj, state, setState) => {
 
     let cRank = parseInt(currentObj.rank);
     let dRank = parseInt(desiredObj.rank)

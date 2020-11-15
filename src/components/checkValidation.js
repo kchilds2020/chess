@@ -12,39 +12,39 @@ import blackKingChecks from './checks/blackKingChecks';
 import whiteKnightChecks from './checks/whiteKnightChecks';
 import blackKnightChecks from './checks/blackKnightChecks';
 
-const checkValidation = (currentPos, desiredPos, posArr) => {
-    console.log('CHECK VALIDATION: ', currentPos, desiredPos, posArr);
+const checkValidation = (currentPos, desiredPos, state, setState /*posArr*/) => {
+    console.log('CHECK VALIDATION: ', currentPos, desiredPos, state.position);
 
-    let currentObj = findObjectAtLocation(currentPos, posArr);
-    let desiredObj = findObjectAtLocation(desiredPos, posArr);
+    let currentObj = findObjectAtLocation(currentPos, state.position);
+    let desiredObj = findObjectAtLocation(desiredPos, state.position);
 
     console.log(currentObj.piece, desiredObj.rank,currentObj.rank)
 
     switch(currentObj.piece) {
         case 'white-pawn':
-            return whitePawnChecks(currentObj, desiredObj, posArr);
+            return whitePawnChecks(currentObj, desiredObj, state, setState);
         case 'black-pawn':
-            return blackPawnChecks(currentObj, desiredObj, posArr);
+            return blackPawnChecks(currentObj, desiredObj, state, setState);
         case 'white-rook':
-            return whiteRookChecks(currentObj, desiredObj, posArr);
+            return whiteRookChecks(currentObj, desiredObj, state, setState);
         case 'black-rook':
-            return blackRookChecks(currentObj, desiredObj, posArr);
+            return blackRookChecks(currentObj, desiredObj, state, setState);
         case 'white-bishop':
-            return whiteBishopChecks(currentObj, desiredObj, posArr);
+            return whiteBishopChecks(currentObj, desiredObj, state, setState);
         case 'black-bishop':
-            return blackBishopChecks(currentObj, desiredObj, posArr);
+            return blackBishopChecks(currentObj, desiredObj, state, setState);
         case 'white-queen':
-            return whiteQueenChecks(currentObj, desiredObj, posArr);
+            return whiteQueenChecks(currentObj, desiredObj, state, setState);
         case 'black-queen':
-            return blackQueenChecks(currentObj, desiredObj, posArr);
+            return blackQueenChecks(currentObj, desiredObj, state, setState);
         case 'white-king':
-            return whiteKingChecks(currentObj, desiredObj, posArr);
+            return whiteKingChecks(currentObj, desiredObj, state, setState);
         case 'black-king':
-            return blackKingChecks(currentObj, desiredObj, posArr);
+            return blackKingChecks(currentObj, desiredObj, state, setState);
         case 'white-knight':
-            return whiteKnightChecks(currentObj, desiredObj, posArr);
+            return whiteKnightChecks(currentObj, desiredObj, state, setState);
         case 'black-knight':
-            return blackKnightChecks(currentObj, desiredObj, posArr);
+            return blackKnightChecks(currentObj, desiredObj, state, setState);
     } 
 
     return true;

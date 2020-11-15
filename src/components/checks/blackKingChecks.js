@@ -1,6 +1,6 @@
 import horizontalCollisionChecks from '../utilities/horizontalCollisionChecks'
 
-const blackKingChecks = (currentObj, desiredObj, posArr) => {
+const blackKingChecks = (currentObj, desiredObj, state, setState) => {
     let cRank = parseInt(currentObj.rank);
     let dRank = parseInt(desiredObj.rank)
 
@@ -13,11 +13,22 @@ const blackKingChecks = (currentObj, desiredObj, posArr) => {
 
             console.log('castle attemp')
             
-            if(horizontalCollisionChecks(currentObj, desiredObj, posArr) === true){
+            if(horizontalCollisionChecks(currentObj, desiredObj, state.position) === true){
                 console.log('if(horizontalCollisionChecks(currentObj, desiredObj, posArr) === true)')
                 return false;
             }else{
-                return true;
+                //update state king - g    rook - f
+                let tempPosArr = [...state.position];
+                console.log('CASTLE KING LOCATION', tempPosArr[7][letters.findIndex(element => element === 'g')])
+                tempPosArr[7][letters.findIndex(element => element === 'g')].piece = 'black-king';
+                tempPosArr[7][letters.findIndex(element => element === 'f')].piece = 'black-rook';
+                tempPosArr[7][letters.findIndex(element => element === 'e')].piece = '';
+                tempPosArr[7][letters.findIndex(element => element === 'h')].piece = '';
+
+                let matches = [...state.matchRecord]
+                matches.push('O-O')
+                setState({...state, position: tempPosArr, matchRecord: matches, turn: state.turn === 'white' ? 'black' : 'white' })
+                return false;
             }
     }
 

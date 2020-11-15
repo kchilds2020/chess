@@ -1,5 +1,5 @@
 
-const addMoveToMatchRecord = (piece, destSquare, matchRecord) => {
+const addMoveToMatchRecord = (piece, currentSquare, destSquare, matchRecord) => {
   let p = piece.slice(6);
   let syntax = '';
   let moves = matchRecord;
@@ -26,7 +26,7 @@ const addMoveToMatchRecord = (piece, destSquare, matchRecord) => {
       syntax = ''
   
   }
-  moves.push(`${syntax}${destSquare}`)
+  moves.push(`${syntax}${currentSquare}>${syntax}${destSquare}`)
   return moves;
  }
 

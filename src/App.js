@@ -418,7 +418,7 @@ function App() {
     let destCol = temp[destRow].findIndex(element => element.file === destinationId[0])
     temp[destRow][destCol].piece = piece;
 
-    let moves =  addMoveToMatchRecord(piece, destinationId, state.matchRecord);
+    let moves =  addMoveToMatchRecord(piece, currentId, destinationId, state.matchRecord);
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
   }
@@ -430,20 +430,21 @@ function App() {
     if(state.pov === 'black'){
       for(let i = 0; i < 8; i++){
         for(let j = 7; j >= 0; j--){
-          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} posArr={state.position} turn = {state.turn}/>);
+          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} state = {state} setState = {setState} /*posArr={state.position} turn = {state.turn}*//>);
           count++;
         }
       }
     }else{
       for(let i = 7; i >= 0; i--){
         for(let j = 0; j < 8; j++){
-          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} posArr={state.position} turn={state.turn}/>);
+          temp.push(<SquareOnBoard key = {count} position={state.position[i][j]} updateBoard={updateBoard} state = {state} setState = {setState} /*posArr={state.position} turn={state.turn}*//>);
           count++;
         }
       }
     }
     setSquares(temp);
     console.log("UPDATE");
+    console.log(state.matchRecord)
   },[state.pov, state.position])
 
   
