@@ -18,7 +18,7 @@ function SquareOnBoard({ position, updateBoard, state, setState /*posArr, turn*/
         let destinationSquare = document.getElementById(ev.target.id);
         
         if(checkValidation(piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState) === true){
-            updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2));
+            updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState);
 
             //update image id
             let row = destinationSquare.id.slice(0,1);
