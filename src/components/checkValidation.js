@@ -38,9 +38,9 @@ const checkValidation = (currentPos, desiredPos, posArr) => {
         case 'black-queen':
             return blackQueenChecks(currentObj, desiredObj, posArr);
         case 'white-king':
-            return whiteKingChecks(currentObj, desiredObj);
+            return whiteKingChecks(currentObj, desiredObj, posArr);
         case 'black-king':
-            return blackKingChecks(currentObj, desiredObj);
+            return blackKingChecks(currentObj, desiredObj, posArr);
         case 'white-knight':
             return whiteKnightChecks(currentObj, desiredObj, posArr);
         case 'black-knight':
