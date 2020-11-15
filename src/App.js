@@ -6,8 +6,8 @@ import SquareOnBoard from './components/SquareOnBoard'
 import addMoveToMatchRecord from './components/utilities/addMoveToMatchRecord'
 
 function App() {
- const DARK_COLOR = 'green'
- const LIGHT_COLOR = 'tan'
+ const DARK_COLOR = 'rgba(0,165,255,.5)'
+ const LIGHT_COLOR = 'rgb(210, 225, 239)'
  const [state, setState] = useState({
    playerColor: 'white',
    turn: 'white',
