@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components' 
-import checkValidation from './checkValidation'
+import checkValidation from './checks/checkValidation'
+import MatchState from './state/MatchState'
 
-function SquareOnBoard({ position, updateBoard, state, setState /*posArr, turn*/}) {
-
+function Square({ position, updateBoard}) {
+    
+    const {state, setState} = useContext(MatchState)
+    
     const drag = (ev) => {
         console.log(ev.target);
       ev.dataTransfer.setData("text", ev.target.id);
@@ -28,25 +31,20 @@ function SquareOnBoard({ position, updateBoard, state, setState /*posArr, turn*/
     };
 
     return (
-        <Square style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
+        <SquareDiv style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
                 {position.piece !== '' ? 
                     state.turn === position.piece.slice(0,5) ? 
                         <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag}/> :
                         <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false"/>
                         : <></>}
-        </Square>
+        </SquareDiv>
     )
 }
 
-const Square = styled.div`
+const SquareDiv = styled.div`
     position: relative;
     background-color: blue;
     padding-top: 100%;
-`
-const Label = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
 `
 const Img = styled.img`
     position: absolute;
@@ -55,5 +53,6 @@ const Img = styled.img`
     width: 100%;
     height: 100%;
 `
+//dfsdf
 
-export default SquareOnBoard
+export default Square

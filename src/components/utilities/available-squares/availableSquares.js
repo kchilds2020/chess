@@ -1,5 +1,3 @@
-import checkValidation from "../../checkValidation";
-import findObjectAtLocation from "../findObjectAtLocation";
 
 const findLocationAtObject = (square, state) => {
     let r = parseInt(square.rank) - 1;
@@ -33,13 +31,14 @@ const availablePawnSquares = (square, state, setState) => {
 }
 
 const availableSquares = (square, state, setState) => {
-    let tempPosArr = state.position;
     let avArr = [];
     console.log('AVAILABLESQUARES', square, square.piece.slice(6))
     switch(square.piece.slice(6)){
         case 'pawn':
          avArr = availablePawnSquares(square, state, setState);
         break;
+        default:
+            break;
     }
 
     return avArr;

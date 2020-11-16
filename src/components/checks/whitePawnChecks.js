@@ -2,8 +2,6 @@ import findObjectAtLocation from '../utilities/findObjectAtLocation'
 
 const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
    
-    let cRank = parseInt(currentObj.rank);
-    let dRank = parseInt(desiredObj.rank)
 
     const letters = ['a', 'b', 'c', 'd','e', 'f', 'g', 'h']
 

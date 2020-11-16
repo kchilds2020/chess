@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import MatchState from './components/state/MatchState'
-import Match from './Match'
+import Match from './components/Match'
 
 const App = () => {
   const DARK_COLOR = 'rgba(0,165,255,.5)'
