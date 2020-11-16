@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import MatchState from './state/MatchState'
 import styled from 'styled-components'
 import Square from './Square'
@@ -6,34 +6,13 @@ import updateBoard from './utilities/updateBoard'
 const Board = () => {
    const {state} = useContext(MatchState)
   
-  const [squares, setSquares] = useState([]);
-
-  useEffect(() => {
-    console.log('test');
-    let temp = [];
-    let count = 1;
-    if(state.pov === 'black'){
-      for(let i = 0; i < 8; i++){
-        for(let j = 7; j >= 0; j--){
-          temp.push(<Square key = {count} position={state.position[i][j]} updateBoard={updateBoard} />);
-          count++;
-        }
-      }
-    }else{
-      for(let i = 7; i >= 0; i--){
-        for(let j = 0; j < 8; j++){
-          temp.push(<Square key = {count} position={state.position[i][j]} updateBoard={updateBoard} />);
-          count++;
-        }
-      }
-    }
-    setSquares(temp);
-    console.log("UPDATE");
-    console.log(state.matchRecord)
-  },[state.pov, state.position,state.matchRecord])
     return (
         <BoardDiv> 
-            {squares}
+        {
+          state.pov === 'black' ? 
+            state.position.map(row => row.slice(0).reverse().map((col,index) => <Square key = {index} position={col} updateBoard={updateBoard}/>) ) :
+            state.position.slice(0).reverse().map((row => row.map((col,index) => <Square key = {index} position={col} updateBoard={updateBoard}/>)))
+        }
         </BoardDiv>
     )
 }
