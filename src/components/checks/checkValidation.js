@@ -1,16 +1,16 @@
-import findObjectAtLocation from './utilities/findObjectAtLocation'
-import whitePawnChecks from './checks/whitePawnChecks'
-import blackPawnChecks from './checks/blackPawnChecks'
-import whiteRookChecks from './checks/whiteRookChecks';
-import blackRookChecks from './checks/blackRookChecks';
-import whiteBishopChecks from './checks/whiteBishopChecks'
-import blackBishopChecks from './checks/blackBishopChecks'
-import whiteQueenChecks from './checks/whiteQueenChecks'
-import blackQueenChecks from './checks/blackQueenChecks'
-import whiteKingChecks from './checks/whiteKingChecks';
-import blackKingChecks from './checks/blackKingChecks';
-import whiteKnightChecks from './checks/whiteKnightChecks';
-import blackKnightChecks from './checks/blackKnightChecks';
+import findObjectAtLocation from '../utilities/findObjectAtLocation'
+import whitePawnChecks from './whitePawnChecks'
+import blackPawnChecks from './blackPawnChecks'
+import whiteRookChecks from './whiteRookChecks';
+import blackRookChecks from './blackRookChecks';
+import whiteBishopChecks from './whiteBishopChecks'
+import blackBishopChecks from './blackBishopChecks'
+import whiteQueenChecks from './whiteQueenChecks'
+import blackQueenChecks from './blackQueenChecks'
+import whiteKingChecks from './whiteKingChecks';
+import blackKingChecks from './blackKingChecks';
+import whiteKnightChecks from './whiteKnightChecks';
+import blackKnightChecks from './blackKnightChecks';
 
 const checkValidation = (currentPos, desiredPos, state, setState /*posArr*/) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, state.position);
@@ -45,6 +45,8 @@ const checkValidation = (currentPos, desiredPos, state, setState /*posArr*/) => 
             return whiteKnightChecks(currentObj, desiredObj, state, setState);
         case 'black-knight':
             return blackKnightChecks(currentObj, desiredObj, state, setState);
+        default: 
+        break;
     } 
 
     return true;
