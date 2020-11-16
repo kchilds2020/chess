@@ -12,9 +12,8 @@ import blackKingChecks from './blackKingChecks';
 import whiteKnightChecks from './whiteKnightChecks';
 import blackKnightChecks from './blackKnightChecks';
 
-const checkValidation = (currentPos, desiredPos, state, setState /*posArr*/) => {
+const checkValidation = (currentPos, desiredPos, state, setState) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, state.position);
-
     let currentObj = findObjectAtLocation(currentPos, state.position);
     let desiredObj = findObjectAtLocation(desiredPos, state.position);
 

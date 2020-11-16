@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import checkValidation from './checks/checkValidation'
 import MatchState from './state/MatchState'
 
-function Square({ position, updateBoard}) {
+function Square({ position, updateBoard }) {
     
     const {state, setState} = useContext(MatchState)
     
