@@ -1,47 +1,61 @@
-import findObjectAtLocation from '../utilities/findObjectAtLocation'
+import findLocationFromObject from '../utilities/findLocationFromObject';
 
 const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
-   
-
-    const letters = ['a', 'b', 'c', 'd','e', 'f', 'g', 'h']
-
-    let cFile = letters.findIndex(element => element === currentObj.file);
-    let dFile = letters.findIndex(element => element === desiredObj.file);
+    const c = findLocationFromObject(currentObj);
+    const d = findLocationFromObject(desiredObj);
+    console.log(c.file,c.rank,d.file,d.rank)
 
     //check if pawn goes past three spaces
-    if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) > 2)  return false;
+    if(d.rank - c.rank > 2)  return false;
+
+    //check if first move for double push
+    if(d.rank - c.rank === 2 && c.rank !== 1) return false
+
     //check if pawn foes backwards
-    if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) < 0)  return false;
+    if(d.rank- c.rank < 0)  return false;
 
     //check if pieces are obstructing from moving forward
-    if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) <= 2 && parseInt(desiredObj.rank) - parseInt(currentObj.rank) > 0){
-        for(let i = 1; i < parseInt(desiredObj.rank) - parseInt(currentObj.rank); i++){
-            let tempObj = findObjectAtLocation(`${currentObj.file}${parseInt(currentObj.rank) + i}`,state.position);
-            console.log('TEMP OBJECT', tempObj)
+    console.log(c.file, c.rank)
+    if(d.rank - c.rank <= 2 && d.rank - c.rank > 0){
+        for(let i = 1; i < d.rank - c.rank; i++){
+            //let tempObj = findObjectAtLocation(`${c.file}${c.rank + i}`,state.position);
+            let tempObj = state.position[c.rank + i][c.file]                                                               
+            console.log('TEMP OBJECT ', tempObj)
             if(tempObj.piece !== '') return false; 
         }
     }
 
+
     //check if pawn goes is in different file
-    if(desiredObj.file !== currentObj.file){
-        if(parseInt(desiredObj.rank) - parseInt(currentObj.rank) !== 1 )
+    if(Math.abs(d.file - c.file) > 0){
+        //verify its adjacent squares
+        if(d.rank - c.rank !== 1 || Math.abs(d.file - c.file) !== 1 )
             return false;
         else{
             if(desiredObj.piece === ''){
                 
                 //check en passant
                 let matches = [...state.matchRecord]
+                //check if matches has a length
+                if(matches.length === 0) return false;
+
                 let prevMove = matches[matches.length - 1];
                 console.log('PREV MOVE', prevMove)
 
+                //if pawn move
                 if(prevMove.length === 5){
-                    if(Math.abs(parseInt(prevMove[1]) - parseInt(prevMove[4])) === 2 && parseInt(currentObj.rank) === 5 ){
-                        let tempPosArr = [...state.position]
-                        tempPosArr[4][cFile].piece = '';
-                        tempPosArr[4][dFile].piece = '';
-                        tempPosArr[5][dFile].piece = 'white-pawn'
-                        matches.push(`${currentObj.file}${currentObj.rank}>${desiredObj.file}${desiredObj.rank}`)
-                        setState({...state, position: tempPosArr, turn: state.turn ==='white' ? 'black' : 'white', matchRecord: matches})
+                    console.log(prevMove[3], desiredObj.file)
+                    //check en passant criteria
+                    if(Math.abs(parseInt(prevMove[1]) - parseInt(prevMove[4])) === 2 && c.rank === 4){
+                        if(prevMove[3] === desiredObj.file){
+                            // update board
+                            let tempPosArr = [...state.position]
+                            tempPosArr[4][c.file].piece = '';
+                            tempPosArr[4][d.file].piece = '';
+                            tempPosArr[5][d.file].piece = 'white-pawn'
+                            matches.push(`${c.file}${c.rank}>${d.file}${d.rank}`)
+                            setState({...state, position: tempPosArr, turn: state.turn ==='white' ? 'black' : 'white', matchRecord: matches})
+                        }
                     }
                 }
                 return false;
@@ -49,8 +63,8 @@ const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
         }
     }
 
-    if(desiredObj.piece.slice(0,5) === 'white')
-        return false;
+    if(desiredObj.piece.slice(0,5) !== '')
+        return false; 
 
 
     return true;
