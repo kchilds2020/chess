@@ -1,6 +1,7 @@
 import horizontalCollisionChecks from '../utilities/horizontalCollisionChecks';
 import verticalCollisionChecks from '../utilities/verticalCollisionChecks'
-const whiteRookChecks = (currentObj, desiredObj, state, setState) => {
+
+const rookChecks = (currentObj, desiredObj, state, setState) => {
     
     //dont allow board update if diaganol attempts
     if(desiredObj.file !== currentObj.file && desiredObj.rank !== currentObj.rank) return false;
@@ -10,9 +11,9 @@ const whiteRookChecks = (currentObj, desiredObj, state, setState) => {
     if(horizontalCollisionChecks(currentObj, desiredObj, state.position) === true) return false
     
     //dont allow capture if destination piece is white;
-    if(desiredObj.piece.slice(0,5) === 'white') return false; 
+    if(desiredObj.piece.slice(0,5) === currentObj.piece.slice(0,5)) return false; 
 
     return true;
 }
 
-export default whiteRookChecks
+export default rookChecks
