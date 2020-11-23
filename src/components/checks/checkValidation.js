@@ -1,16 +1,11 @@
 import findObjectAtLocation from '../utilities/findObjectAtLocation'
-import whitePawnChecks from './whitePawnChecks'
-import blackPawnChecks from './blackPawnChecks'
-import whiteRookChecks from './whiteRookChecks';
-import blackRookChecks from './blackRookChecks';
-import whiteBishopChecks from './whiteBishopChecks'
-import blackBishopChecks from './blackBishopChecks'
-import whiteQueenChecks from './whiteQueenChecks'
-import blackQueenChecks from './blackQueenChecks'
-import whiteKingChecks from './whiteKingChecks';
-import blackKingChecks from './blackKingChecks';
-import whiteKnightChecks from './whiteKnightChecks';
-import blackKnightChecks from './blackKnightChecks';
+import pawnChecks from './pawnChecks'
+import rookChecks from './rookChecks'
+import bishopChecks from './bishopChecks'
+import queenChecks from './queenChecks'
+import kingChecks from './kingChecks'
+import knightChecks from './knightChecks'
+
 
 const checkValidation = (currentPos, desiredPos, state, setState) => {
     console.log('CHECK VALIDATION: ', currentPos, desiredPos, state.position);
@@ -19,31 +14,19 @@ const checkValidation = (currentPos, desiredPos, state, setState) => {
 
     console.log(currentObj.piece, desiredObj.rank,currentObj.rank)
 
-    switch(currentObj.piece) {
-        case 'white-pawn':
-            return whitePawnChecks(currentObj, desiredObj, state, setState);
-        case 'black-pawn':
-            return blackPawnChecks(currentObj, desiredObj, state, setState);
-        case 'white-rook':
-            return whiteRookChecks(currentObj, desiredObj, state, setState);
-        case 'black-rook':
-            return blackRookChecks(currentObj, desiredObj, state, setState);
-        case 'white-bishop':
-            return whiteBishopChecks(currentObj, desiredObj, state, setState);
-        case 'black-bishop':
-            return blackBishopChecks(currentObj, desiredObj, state, setState);
-        case 'white-queen':
-            return whiteQueenChecks(currentObj, desiredObj, state, setState);
-        case 'black-queen':
-            return blackQueenChecks(currentObj, desiredObj, state, setState);
-        case 'white-king':
-            return whiteKingChecks(currentObj, desiredObj, state, setState);
-        case 'black-king':
-            return blackKingChecks(currentObj, desiredObj, state, setState);
-        case 'white-knight':
-            return whiteKnightChecks(currentObj, desiredObj, state, setState);
-        case 'black-knight':
-            return blackKnightChecks(currentObj, desiredObj, state, setState);
+    switch(currentObj.piece.slice(6)) {
+        case 'pawn':
+            return pawnChecks(currentObj, desiredObj, state, setState);
+        case 'rook':
+            return rookChecks(currentObj, desiredObj, state, setState);
+        case 'bishop':
+            return bishopChecks(currentObj, desiredObj, state, setState);
+        case 'queen':
+            return queenChecks(currentObj, desiredObj, state, setState);
+        case 'king':
+            return kingChecks(currentObj, desiredObj, state, setState);
+        case 'knight':
+            return knightChecks(currentObj, desiredObj, state, setState);
         default: 
         break;
     } 

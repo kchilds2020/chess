@@ -1,6 +1,6 @@
 import horizontalCollisionChecks from "../utilities/horizontalCollisionChecks";
 
-const whiteKingChecks = (currentObj, desiredObj, state, setState) => {
+const kingChecks = (currentObj, desiredObj, state, setState) => {
     let cRank = parseInt(currentObj.rank);
     let dRank = parseInt(desiredObj.rank)
 
@@ -11,7 +11,7 @@ const whiteKingChecks = (currentObj, desiredObj, state, setState) => {
     let castled = false;
 
     state.matchRecord.forEach((element, i) => {
-        if(element === 'O-O' && i % 2 === 0){
+        if(element === 'O-O' && i % 2 === (currentObj.piece.slice(0,5) === 'white' ? 0 : 1)){
             castled = true;
         }
     })
@@ -29,10 +29,17 @@ const whiteKingChecks = (currentObj, desiredObj, state, setState) => {
                     //update state king - g    rook - f
                     let tempPosArr = [...state.position];
                     console.log('CASTLE KING LOCATION', tempPosArr[0][letters.findIndex(element => element === 'g')])
-                    tempPosArr[0][letters.findIndex(element => element === 'g')].piece = 'white-king';
-                    tempPosArr[0][letters.findIndex(element => element === 'f')].piece = 'white-rook';
-                    tempPosArr[0][letters.findIndex(element => element === 'e')].piece = '';
-                    tempPosArr[0][letters.findIndex(element => element === 'h')].piece = '';
+                    if(currentObj.piece.slice(0,5) === 'white'){
+                        tempPosArr[0][letters.findIndex(element => element === 'g')].piece = 'white-king';
+                        tempPosArr[0][letters.findIndex(element => element === 'f')].piece = 'white-rook';
+                        tempPosArr[0][letters.findIndex(element => element === 'e')].piece = '';
+                        tempPosArr[0][letters.findIndex(element => element === 'h')].piece = '';
+                    }else{
+                        tempPosArr[7][letters.findIndex(element => element === 'g')].piece = 'black-king';
+                        tempPosArr[7][letters.findIndex(element => element === 'f')].piece = 'black-rook';
+                        tempPosArr[7][letters.findIndex(element => element === 'e')].piece = '';
+                        tempPosArr[7][letters.findIndex(element => element === 'h')].piece = '';
+                    }
 
                     let matches = [...state.matchRecord]
                     matches.push('O-O')
@@ -52,10 +59,17 @@ const whiteKingChecks = (currentObj, desiredObj, state, setState) => {
                     //update state king - g    rook - f
                     let tempPosArr = [...state.position];
                     console.log('CASTLE Queen LOCATION', tempPosArr[0][letters.findIndex(element => element === 'g')])
-                    tempPosArr[0][letters.findIndex(element => element === 'c')].piece = 'white-king';
-                    tempPosArr[0][letters.findIndex(element => element === 'd')].piece = 'white-rook';
-                    tempPosArr[0][letters.findIndex(element => element === 'a')].piece = '';
-                    tempPosArr[0][letters.findIndex(element => element === 'e')].piece = '';
+                    if(currentObj.piece.slice(0,5) === 'white'){
+                        tempPosArr[0][letters.findIndex(element => element === 'c')].piece = 'white-king';
+                        tempPosArr[0][letters.findIndex(element => element === 'd')].piece = 'white-rook';
+                        tempPosArr[0][letters.findIndex(element => element === 'a')].piece = '';
+                        tempPosArr[0][letters.findIndex(element => element === 'e')].piece = '';
+                    }else{
+                        tempPosArr[7][letters.findIndex(element => element === 'c')].piece = 'black-king';
+                        tempPosArr[7][letters.findIndex(element => element === 'd')].piece = 'black-rook';
+                        tempPosArr[7][letters.findIndex(element => element === 'a')].piece = '';
+                        tempPosArr[7][letters.findIndex(element => element === 'e')].piece = '';
+                    }
 
                     let matches = [...state.matchRecord]
                     matches.push('O-O')
@@ -75,4 +89,4 @@ const whiteKingChecks = (currentObj, desiredObj, state, setState) => {
     return true;
 }
 
-export default whiteKingChecks
+export default kingChecks
