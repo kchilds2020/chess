@@ -68,6 +68,9 @@ const pawnChecks = (currentObj, desiredObj, state, setState) => {
     if(desiredObj.piece.slice(0,5) === currentObj.piece.slice(0,5))
         return false;  
 
+    if(c.file === d.file && desiredObj.piece !== '')
+        return false;
+
 
     return true;
 }

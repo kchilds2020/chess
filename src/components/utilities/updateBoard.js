@@ -1,5 +1,5 @@
 import addMoveToMatchRecord from './addMoveToMatchRecord'
-//import availableSquares from './available-squares/availableSquares';
+import availableSquares from './available-squares/availableSquares';
 
 const updateBoard = (currentId, destinationId,state, setState) =>{
     let temp = [...state.position];
@@ -15,8 +15,7 @@ const updateBoard = (currentId, destinationId,state, setState) =>{
     let moves =  addMoveToMatchRecord(piece, currentId, destinationId, state.matchRecord);
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
-    //let avSquares = availableSquares(temp[destRow][destCol], state, setState)
-    //console.log('avSQUARES', avSquares)
+    availableSquares(state, setState)
   }
 
 export default updateBoard
