@@ -4,7 +4,6 @@ import findLocationFromObject from '../utilities/findLocationFromObject'
 const bishopChecks = (currentObj, desiredObj, state, setState) => {
     const c = findLocationFromObject(currentObj);
     const d = findLocationFromObject(desiredObj);
-    console.log(c.file,c.rank,d.file,d.rank)
 
     if(Math.abs(c.rank - d.rank) !== Math.abs(c.file - d.file)) return false;
 

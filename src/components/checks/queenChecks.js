@@ -8,7 +8,6 @@ const queenChecks = (currentObj, desiredObj, state, setState) => {
     console.log('horizontal')
     const c = findLocationFromObject(currentObj);
     const d = findLocationFromObject(desiredObj);
-    console.log(c.file,c.rank,d.file,d.rank)
 
     if(Math.abs(c.rank - d.rank) === Math.abs(c.file - d.file)){
         if(diagonalCollisionChecks(currentObj, desiredObj, state.position) === true) return false;
