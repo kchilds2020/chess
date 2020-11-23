@@ -8,11 +8,9 @@ import knightChecks from './knightChecks'
 
 
 const checkValidation = (currentPos, desiredPos, state, setState) => {
-    console.log('CHECK VALIDATION: ', currentPos, desiredPos, state.position);
     let currentObj = findObjectAtLocation(currentPos, state.position);
     let desiredObj = findObjectAtLocation(desiredPos, state.position);
 
-    console.log(currentObj.piece, desiredObj.rank,currentObj.rank)
 
     switch(currentObj.piece.slice(6)) {
         case 'pawn':

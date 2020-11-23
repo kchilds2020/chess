@@ -15,8 +15,7 @@ const kingChecks = (currentObj, desiredObj, state, setState) => {
             castled = true;
         }
     })
-    
-    console.log(desiredObj.file)
+
     if(castled === false){
         if((desiredObj.file === 'g' || desiredObj.file === "h") && (Math.abs(cRank - dRank)  > 1 || Math.abs(cFile - dFile) > 1)){
 

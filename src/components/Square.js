@@ -8,7 +8,6 @@ function Square({ position, updateBoard }) {
     const {state, setState} = useContext(MatchState)
     
     const drag = (ev) => {
-        console.log(ev.target);
       ev.dataTransfer.setData("text", ev.target.id);
     }
     

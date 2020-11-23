@@ -3,7 +3,6 @@ import findLocationFromObject from '../utilities/findLocationFromObject';
 const pawnChecks = (currentObj, desiredObj, state, setState) => {
     const c = findLocationFromObject(currentObj);
     const d = findLocationFromObject(desiredObj);
-    console.log(c.file,c.rank,d.file,d.rank)
 
     //check if pawn goes past three spaces
     if(Math.abs(d.rank - c.rank) > 2)  return false;
@@ -15,7 +14,6 @@ const pawnChecks = (currentObj, desiredObj, state, setState) => {
     if((d.rank - c.rank < 0 && currentObj.piece.slice(0,5) === 'white') || (c.rank - d.rank < 0 && currentObj.piece.slice(0,5) === 'black'))  return false;
 
     //check if pieces are obstructing from moving forward
-    console.log(c.file, c.rank)
     if(d.rank - c.rank <= 2 && d.rank - c.rank > 0){
         for(let i = 1; i < Math.abs(d.rank - c.rank); i++){
             let tempObj = currentObj.piece.slice(0,5) === 'white' ? state.position[c.rank + i][c.file] : state.position[c.rank - i][c.file]                                                               
@@ -38,11 +36,9 @@ const pawnChecks = (currentObj, desiredObj, state, setState) => {
                 if(matches.length === 0) return false;
 
                 let prevMove = matches[matches.length - 1];
-                console.log('PREV MOVE', prevMove)
 
                 //if pawn move
                 if(prevMove.length === 5){
-                    console.log(prevMove[3], desiredObj.file)
                     //check en passant criteria
                     if(Math.abs(parseInt(prevMove[1]) - parseInt(prevMove[4])) === 2){
                         if(prevMove[3] === desiredObj.file){
