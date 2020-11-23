@@ -1,4 +1,4 @@
-import findLocationFromObject from '../utilities/findLocationFromObject';
+import findLocationFromObject from '../utilities/findLocationFromObject'; 
 
 const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
     const c = findLocationFromObject(currentObj);
@@ -63,7 +63,7 @@ const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
         }
     }
 
-    if(desiredObj.piece.slice(0,5) !== '')
+    if(desiredObj.piece.slice(0,5) === 'white')
         return false; 
 
 
