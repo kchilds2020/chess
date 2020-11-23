@@ -50,9 +50,9 @@ const whitePawnChecks = (currentObj, desiredObj, state, setState) => {
                         if(prevMove[3] === desiredObj.file){
                             // update board
                             let tempPosArr = [...state.position]
-                            tempPosArr[4][c.file].piece = '';
-                            tempPosArr[4][d.file].piece = '';
-                            tempPosArr[5][d.file].piece = 'white-pawn'
+                            tempPosArr[c.rank][c.file].piece = '';
+                            tempPosArr[c.rank][d.file].piece = '';
+                            tempPosArr[d.rank][d.file].piece = 'white-pawn'
                             matches.push(`${c.file}${c.rank}>${d.file}${d.rank}`)
                             setState({...state, position: tempPosArr, turn: state.turn ==='white' ? 'black' : 'white', matchRecord: matches})
                         }
