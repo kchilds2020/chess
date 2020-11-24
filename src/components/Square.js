@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import checkValidation from './checks/checkValidation'
 import MatchState from './state/MatchState'
 import highlightAvSquares from './utilities/available-squares/highlightAvSquares'
+import resetBoardColor from './utilities/resetBoardColors'
 
 function Square({ position, updateBoard }) {
     
@@ -36,12 +37,16 @@ function Square({ position, updateBoard }) {
         }
     }
 
+    const resetBoard = (e) => {
+        resetBoardColor(state,setState)
+    }
+
     return (
         <SquareDiv style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
                 {position.piece !== '' ? 
                     state.turn === position.piece.slice(0,5) ? 
-                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag} onClick={highlight}/> :
-                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false"/>
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag} onClick={highlight} /> :
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false" onClick={resetBoard}/>
                         : <></>}
         </SquareDiv>
     )

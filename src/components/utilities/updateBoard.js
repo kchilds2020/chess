@@ -1,7 +1,9 @@
 import addMoveToMatchRecord from './addMoveToMatchRecord'
 import availableSquares from './available-squares/availableSquares';
+import resetBoardColor from './resetBoardColors';
 
 const updateBoard = (currentId, destinationId,state, setState) =>{
+    resetBoardColor(state, setState);
     let temp = [...state.position];
     let currentRow = currentId[1] - 1;
     let currentCol = temp[currentRow].findIndex(element => element.file === currentId[0]);
