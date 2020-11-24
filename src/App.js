@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import MatchState from './components/state/MatchState'
 import Match from './components/Match'
+import {LIGHT_COLOR, DARK_COLOR} from './components/Config'
 
 const App = () => {
-  const DARK_COLOR = 'rgba(0,165,255,.5)'
-  const LIGHT_COLOR = 'rgb(210, 225, 239)'
+  
   const [state, setState] = useState({
    playerColor: 'white',
    turn: 'white',

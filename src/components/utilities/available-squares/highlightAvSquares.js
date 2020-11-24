@@ -1,5 +1,7 @@
 import findLocationFromObject from '../findLocationFromObject'
+import resetBoardColor from '../resetBoardColors';
 const highlightAvSquares = (position, state, setState) => {
+    resetBoardColor(state, setState);
     let p = findLocationFromObject(position)
     let temp = state.position;
     temp[p.rank][p.file].avSquares.forEach(element => {
