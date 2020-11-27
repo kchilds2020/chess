@@ -5,7 +5,7 @@ const avPawnSquares = (currentObj,state) => {
     let tempArr = []
     const boardLen = 7;
 
-    //check all available squares in uppward direction
+    // upward direction checks
     console.log(c)
 
     for(let i = 1; i <= boardLen - c.rank; i++){
@@ -14,10 +14,62 @@ const avPawnSquares = (currentObj,state) => {
         if(tempObj.piece === '')
             tempArr.push({file: c.file, rank: c.rank+i})
         else if(tempObj.piece.slice(0,5) === currentObj.piece.slice(0,5)){
-            return tempArr
+            //return tempArr
+            break;
         }else{
             tempArr.push({file: c.file, rank: c.rank+i})
-            return tempArr
+            //return tempArr
+            break;
+        }
+    }
+
+    // downward direction checks
+
+
+    for(let i = 1; i <= c.rank; i++){
+        let tempObj = state.position[c.rank - i][c.file];
+        //check if tempObj has a piece
+        if(tempObj.piece === '')
+            tempArr.push({file: c.file, rank: c.rank-i})
+        else if(tempObj.piece.slice(0,5) === currentObj.piece.slice(0,5)){
+            //return tempArr
+            break;
+        }else{
+            tempArr.push({file: c.file, rank: c.rank-i})
+            //return tempArr
+            break;
+        }
+    }
+
+    // right direction checks
+    for(let i = 1; i <= boardLen - c.file; i++){
+        let tempObj = state.position[c.rank][c.file + i];
+        //check if tempObj has a piece
+        if(tempObj.piece === '')
+            tempArr.push({file: c.file+i, rank: c.rank})
+        else if(tempObj.piece.slice(0,5) === currentObj.piece.slice(0,5)){
+            //return tempArr
+            break;
+        }else{
+            tempArr.push({file: c.file + i, rank: c.rank})
+            //return tempArr
+            break;
+        }
+    }
+
+    // left direction checks
+    for(let i = 1; i <= c.file; i++){
+        let tempObj = state.position[c.rank][c.file - i];
+        //check if tempObj has a piece
+        if(tempObj.piece === '')
+            tempArr.push({file: c.file-i, rank: c.rank})
+        else if(tempObj.piece.slice(0,5) === currentObj.piece.slice(0,5)){
+            //return tempArr
+            break;
+        }else{
+            tempArr.push({file: c.file - i, rank: c.rank})
+            //return tempArr
+            break;
         }
     }
 

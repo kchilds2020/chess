@@ -1,5 +1,6 @@
 import avPawnSquares from './avPawnSquares'
 import avRookSquares from './avRookSquares'
+import avBishopSquares from './avBishopSquares'
 const availableSquares = (state, setState) => {
     console.log('AVAILABLE SQUARES')
     //let squaresWithPieces = []
@@ -12,6 +13,9 @@ const availableSquares = (state, setState) => {
                     break;
                 case 'rook':
                     col.avSquares = avRookSquares(col,state)
+                    break;
+                case 'bishop':
+                    col.avSquares = avBishopSquares(col,state)
                     break;
                 default:
                     break;
