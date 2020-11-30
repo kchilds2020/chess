@@ -6,7 +6,6 @@ const avPawnSquares = (currentObj,state) => {
     const boardLen = 7;
 
     // upper right direction checks
-    console.log(c)
 
     for(let i = 1; i <= boardLen; i++){
         if(c.rank+i < 8 && c.file+i < 8){
