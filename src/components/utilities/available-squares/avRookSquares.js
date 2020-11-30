@@ -6,7 +6,6 @@ const avPawnSquares = (currentObj,state) => {
     const boardLen = 7;
 
     // upward direction checks
-    console.log(c)
 
     for(let i = 1; i <= boardLen - c.rank; i++){
         let tempObj = state.position[c.rank + i][c.file];

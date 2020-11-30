@@ -5,7 +5,6 @@ const avKnightSquares = (currentObj, state) => {
     let tempArr = []
     let tempObj;
 
-    console.log('KNIGHT', c)
 
     //left top check
     if(c.rank + 1 <= 7 && c.file - 2 >= 0){

@@ -25,9 +25,9 @@ function Square({ position, updateBoard }) {
             updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState);
 
             //update image id
-            let row = destinationSquare.id.slice(0,1);
+            /* let row = destinationSquare.id.slice(0,1);
             let col = destinationSquare.id.slice(1);
-            piece.id = `${position.piece}>${row}${col}`; 
+            piece.id = `${position.piece}>${row}${col}` */; 
         }
     };
 

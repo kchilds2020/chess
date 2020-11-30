@@ -6,7 +6,7 @@ import avQueenSquares from './avQueenSquares'
 import avKingSquares from './avKingSquares'
 
 const availableSquares = (state, setState) => {
-    console.log('AVAILABLE SQUARES')
+    
     //let squaresWithPieces = []
 
     state.position.forEach(
@@ -35,6 +35,7 @@ const availableSquares = (state, setState) => {
             }        
         })
     )
+    console.log('AVAILABLE SQUARES', state)
 }
 
 export default availableSquares

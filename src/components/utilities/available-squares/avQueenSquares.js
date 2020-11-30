@@ -6,7 +6,6 @@ const avQueenSquares = (currentObj,state) => {
     const boardLen = 7;
 
     // upper right direction checks
-    console.log(c)
 
     for(let i = 1; i <= boardLen; i++){
         if(c.rank+i < 8 && c.file+i < 8){
@@ -90,7 +89,6 @@ const avQueenSquares = (currentObj,state) => {
     }
 
     // upward direction checks
-    console.log(c)
 
     for(let i = 1; i <= boardLen - c.rank; i++){
         let tempObj = state.position[c.rank + i][c.file];

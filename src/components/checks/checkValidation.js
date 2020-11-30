@@ -5,31 +5,44 @@ import bishopChecks from './bishopChecks'
 import queenChecks from './queenChecks'
 import kingChecks from './kingChecks'
 import knightChecks from './knightChecks'
+import kingDangerChecks from './kingDangerChecks'
 
 
 const checkValidation = (currentPos, desiredPos, state, setState) => {
     let currentObj = findObjectAtLocation(currentPos, state.position);
     let desiredObj = findObjectAtLocation(desiredPos, state.position);
-
-
+    let res = true;
     switch(currentObj.piece.slice(6)) {
         case 'pawn':
-            return pawnChecks(currentObj, desiredObj, state, setState);
+            res = pawnChecks(currentObj, desiredObj, state, setState);
+            break;
         case 'rook':
-            return rookChecks(currentObj, desiredObj, state, setState);
+            res = rookChecks(currentObj, desiredObj, state, setState);
+            break;
         case 'bishop':
-            return bishopChecks(currentObj, desiredObj, state, setState);
+            res = bishopChecks(currentObj, desiredObj, state, setState);
+            break;
         case 'queen':
-            return queenChecks(currentObj, desiredObj, state, setState);
+            res = queenChecks(currentObj, desiredObj, state, setState);
+            break;
         case 'king':
-            return kingChecks(currentObj, desiredObj, state, setState);
+            res = kingChecks(currentObj, desiredObj, state, setState);
+            break;
         case 'knight':
-            return knightChecks(currentObj, desiredObj, state, setState);
+            res = knightChecks(currentObj, desiredObj, state, setState);
+            break;
         default: 
-        break;
+            break;
     } 
 
-    return true;
+    
+
+    if(res === false) return false
+
+    //check if in check after
+    kingDangerChecks(desiredObj, state.position)
+
+    return res;
 
 }
 

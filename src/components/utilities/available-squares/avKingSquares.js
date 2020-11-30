@@ -5,7 +5,6 @@ const avKingSquares = (currentObj, state) => {
     let tempArr = []
     let tempObj;
 
-    console.log('KNIGHT', c)
 
     //up
     if(c.rank + 1 <= 7){
