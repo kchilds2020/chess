@@ -1,5 +1,5 @@
 import findLocationFromObject from '../findLocationFromObject'
-const avQueenSquares = (currentObj,state) => {
+const avQueenSquares = (currentObj,position) => {
     const c = findLocationFromObject(currentObj)
     
     let tempArr = []
@@ -9,7 +9,7 @@ const avQueenSquares = (currentObj,state) => {
 
     for(let i = 1; i <= boardLen; i++){
         if(c.rank+i < 8 && c.file+i < 8){
-            let tempObj = state.position[c.rank + i][c.file+i];
+            let tempObj = position[c.rank + i][c.file+i];
             //check if tempObj has a piece
             if(tempObj.piece === '')
                 tempArr.push({file: c.file+i, rank: c.rank+i})
@@ -31,7 +31,7 @@ const avQueenSquares = (currentObj,state) => {
 
     for(let i = 1; i <= boardLen; i++){
         if(c.rank - i >= 0 && c.file + i <8){
-            let tempObj = state.position[c.rank - i][c.file + i];
+            let tempObj = position[c.rank - i][c.file + i];
             //check if tempObj has a piece
             if(tempObj.piece === '')
                 tempArr.push({file: c.file + i, rank: c.rank - i})
@@ -51,7 +51,7 @@ const avQueenSquares = (currentObj,state) => {
     // downward left direction checks
     for(let i = 1; i <= boardLen; i++){
         if(c.rank - i >= 0 && c.file - i >= 0){
-            let tempObj = state.position[c.rank-i][c.file-i];
+            let tempObj = position[c.rank-i][c.file-i];
             //check if tempObj has a piece
             if(tempObj.piece === '')
                 tempArr.push({file: c.file-i, rank: c.rank-i})
@@ -71,7 +71,7 @@ const avQueenSquares = (currentObj,state) => {
     // upward left direction checks
     for(let i = 1; i <= boardLen; i++){
         if(c.rank +i< 8 && c.file-i >= 0){
-            let tempObj = state.position[c.rank+i][c.file - i];
+            let tempObj = position[c.rank+i][c.file - i];
             //check if tempObj has a piece
             if(tempObj.piece === '')
                 tempArr.push({file: c.file-i, rank: c.rank+i})
@@ -91,7 +91,7 @@ const avQueenSquares = (currentObj,state) => {
     // upward direction checks
 
     for(let i = 1; i <= boardLen - c.rank; i++){
-        let tempObj = state.position[c.rank + i][c.file];
+        let tempObj = position[c.rank + i][c.file];
         //check if tempObj has a piece
         if(tempObj.piece === '')
             tempArr.push({file: c.file, rank: c.rank+i})
@@ -109,7 +109,7 @@ const avQueenSquares = (currentObj,state) => {
 
 
     for(let i = 1; i <= c.rank; i++){
-        let tempObj = state.position[c.rank - i][c.file];
+        let tempObj = position[c.rank - i][c.file];
         //check if tempObj has a piece
         if(tempObj.piece === '')
             tempArr.push({file: c.file, rank: c.rank-i})
@@ -125,7 +125,7 @@ const avQueenSquares = (currentObj,state) => {
 
     // right direction checks
     for(let i = 1; i <= boardLen - c.file; i++){
-        let tempObj = state.position[c.rank][c.file + i];
+        let tempObj = position[c.rank][c.file + i];
         //check if tempObj has a piece
         if(tempObj.piece === '')
             tempArr.push({file: c.file+i, rank: c.rank})
@@ -141,7 +141,7 @@ const avQueenSquares = (currentObj,state) => {
 
     // left direction checks
     for(let i = 1; i <= c.file; i++){
-        let tempObj = state.position[c.rank][c.file - i];
+        let tempObj = position[c.rank][c.file - i];
         //check if tempObj has a piece
         if(tempObj.piece === '')
             tempArr.push({file: c.file-i, rank: c.rank})

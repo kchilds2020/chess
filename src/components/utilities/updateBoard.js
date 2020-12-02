@@ -17,7 +17,7 @@ const updateBoard = (currentId, destinationId,state, setState) =>{
     let moves =  addMoveToMatchRecord(piece, currentId, destinationId, state.matchRecord);
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
-    availableSquares(state, setState)
+    availableSquares(state.position, setState)
   }
 
 export default updateBoard
