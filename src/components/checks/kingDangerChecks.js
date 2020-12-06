@@ -5,9 +5,10 @@ import availableSquares from '../utilities/available-squares/availableSquares'
 
 const kingDangerChecks = (currentObj,desiredObj,position, setState) => {
     let d = findLocationFromObject(desiredObj)
-    let k = currentObj.piece.slice(0,5) === 'black' ? findKingLocation(position, 'white') : findKingLocation(position, 'black');
+    let k = currentObj.piece.slice(0,5) === 'black' ? findKingLocation(position, 'black') : findKingLocation(position, 'white');
     let temp = position;
     let desObj = desiredObj;
+    let res = true;
     desObj.piece = currentObj.piece;
     temp[d.rank][d.file] = desObj;
     console.log(d, k, temp[d.rank][d.file])
@@ -22,11 +23,13 @@ const kingDangerChecks = (currentObj,desiredObj,position, setState) => {
                         console.log(element, k)
                         if(element.rank === k.rank && element.file === k.file){
                             console.log('IN CHECK')
+                            res = false;
                         }
                     })
                 }
             }
         }
+        return res;
 }
 
 export default kingDangerChecks
