@@ -36,11 +36,13 @@ const checkValidation = (currentPos, desiredPos, state, setState) => {
     } 
 
     
-
     if(res === false) return false
 
     //check if in check after
-    kingDangerChecks(currentObj,desiredObj, state.position, setState)
+    if(!kingDangerChecks(currentObj,desiredObj, state.position, setState)) return false
+
+    
+    
 
     return res;
 
