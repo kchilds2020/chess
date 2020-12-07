@@ -4,6 +4,7 @@ import checkValidation from './checks/checkValidation'
 import MatchState from './state/MatchState'
 import highlightAvSquares from './utilities/available-squares/highlightAvSquares'
 import resetBoardColor from './utilities/resetBoardColors'
+import findObjectAtLocation from './utilities/findObjectAtLocation'
 
 function Square({ position, updateBoard }) {
     
@@ -20,9 +21,12 @@ function Square({ position, updateBoard }) {
         //get piece ID and new Square ID and update position array
         let piece = document.getElementById(ev.dataTransfer.getData("text"));
         let destinationSquare = document.getElementById(ev.target.id);
-        
-        if(checkValidation(piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState) === true){
-            updateBoard( piece.id.slice(-2), destinationSquare.id.slice(-2), state, setState);
+
+        let currentObj = findObjectAtLocation(piece.id.slice(-2), state.position);
+        let desiredObj = findObjectAtLocation(destinationSquare.id.slice(-2), state.position);
+
+        if(checkValidation(currentObj, desiredObj, state, setState) === true){
+            updateBoard( currentObj, desiredObj, state, setState);
 
             //update image id
             /* let row = destinationSquare.id.slice(0,1);
@@ -30,7 +34,7 @@ function Square({ position, updateBoard }) {
             piece.id = `${position.piece}>${row}${col}` */; 
         }
     };
-
+ 
     const highlight = (e) => {
         if(position.avSquares){
             highlightAvSquares(position, state, setState)
