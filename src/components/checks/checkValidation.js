@@ -1,16 +1,12 @@
-import findObjectAtLocation from '../utilities/findObjectAtLocation'
 import pawnChecks from './pawnChecks'
 import rookChecks from './rookChecks'
 import bishopChecks from './bishopChecks'
 import queenChecks from './queenChecks'
 import kingChecks from './kingChecks'
 import knightChecks from './knightChecks'
-import isKingPinned from './isKingPinned'
 
 
-const checkValidation = (currentPos, desiredPos, state, setState) => {
-    let currentObj = findObjectAtLocation(currentPos, state.position);
-    let desiredObj = findObjectAtLocation(desiredPos, state.position);
+const checkValidation = (currentObj, desiredObj, state, setState) => {
     let res = true;
 
      

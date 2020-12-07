@@ -1,23 +1,24 @@
 import addMoveToMatchRecord from './addMoveToMatchRecord'
 import availableSquares from './available-squares/availableSquares';
 import resetBoardColor from './resetBoardColors';
+import findLocationFromObject from './findLocationFromObject'
 
-const updateBoard = (currentId, destinationId,state, setState) =>{
+const updateBoard = (currentObj, desiredObj, state, setState) =>{
     resetBoardColor(state, setState);
     let temp = [...state.position];
-    let currentRow = currentId[1] - 1;
-    let currentCol = temp[currentRow].findIndex(element => element.file === currentId[0]);
-    let piece = temp[currentRow][currentCol].piece;
-    temp[currentRow][currentCol].piece = '';
-
-    let destRow = destinationId[1] - 1;
-    let destCol = temp[destRow].findIndex(element => element.file === destinationId[0])
-    temp[destRow][destCol].piece = piece;
+    const c = findLocationFromObject(currentObj);
+    const d = findLocationFromObject(desiredObj);
+    
+    let piece = temp[c.rank][c.file].piece;
+    temp[c.rank][c.file].piece = '';
+    temp[d.rank][d.file].piece = piece;
     temp = availableSquares(temp);
 
-    let moves =  addMoveToMatchRecord(piece, currentId, destinationId, state.matchRecord);
+    let moves =  addMoveToMatchRecord(piece, currentObj, desiredObj, state.matchRecord);
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
-  }
 
+    console.log(state)
+  }
+ 
 export default updateBoard
