@@ -13,11 +13,11 @@ const updateBoard = (currentId, destinationId,state, setState) =>{
     let destRow = destinationId[1] - 1;
     let destCol = temp[destRow].findIndex(element => element.file === destinationId[0])
     temp[destRow][destCol].piece = piece;
+    temp = availableSquares(temp);
 
     let moves =  addMoveToMatchRecord(piece, currentId, destinationId, state.matchRecord);
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
-    availableSquares(state.position, setState)
   }
 
 export default updateBoard

@@ -5,37 +5,37 @@ import avKnightSquares from './avKnightSquares'
 import avQueenSquares from './avQueenSquares'
 import avKingSquares from './avKingSquares'
 
-const availableSquares = (position, setState) => {
+const availableSquares = (position) => {
     
     //let squaresWithPieces = []
-
-    position.forEach(
+    let temp = position;
+    temp.forEach(
         row => row.forEach(col => {
             switch(col.piece.slice(6)){
                 case 'pawn':
-                    col.avSquares = avPawnSquares(col,position)
+                    col.avSquares = avPawnSquares(col,temp)
                     break;
                 case 'rook':
-                    col.avSquares = avRookSquares(col,position)
+                    col.avSquares = avRookSquares(col,temp)
                     break;
                 case 'bishop':
-                    col.avSquares = avBishopSquares(col,position)
+                    col.avSquares = avBishopSquares(col,temp)
                     break;
                 case 'knight':
-                    col.avSquares = avKnightSquares(col,position)
+                    col.avSquares = avKnightSquares(col,temp)
                     break;
                 case 'queen':
-                    col.avSquares = avQueenSquares(col,position)
+                    col.avSquares = avQueenSquares(col,temp)
                     break;
                 case 'king':
-                    col.avSquares = avKingSquares(col,position)
+                    col.avSquares = avKingSquares(col,temp)
                     break;
                 default:
                     break;
             }        
         })
     )
-    console.log('AVAILABLE SQUARES', position)
+    return temp
 }
 
 export default availableSquares

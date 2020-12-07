@@ -5,13 +5,16 @@ import bishopChecks from './bishopChecks'
 import queenChecks from './queenChecks'
 import kingChecks from './kingChecks'
 import knightChecks from './knightChecks'
-import kingDangerChecks from './kingDangerChecks'
+import isKingPinned from './isKingPinned'
 
 
 const checkValidation = (currentPos, desiredPos, state, setState) => {
     let currentObj = findObjectAtLocation(currentPos, state.position);
     let desiredObj = findObjectAtLocation(desiredPos, state.position);
     let res = true;
+
+     
+
     switch(currentObj.piece.slice(6)) {
         case 'pawn':
             res = pawnChecks(currentObj, desiredObj, state, setState);
@@ -39,7 +42,8 @@ const checkValidation = (currentPos, desiredPos, state, setState) => {
     if(res === false) return false
 
     //check if in check after
-    if(!kingDangerChecks(currentObj,desiredObj, state.position, setState)) return false
+    /* if(isKingPinned(currentObj,desiredObj, state.position)) return false */
+   
 
     
     
