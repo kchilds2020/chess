@@ -10,6 +10,7 @@ const App = () => {
    turn: 'white',
    pov: 'white',
    winner: 'incomplete',
+   pieceClicked: '',
    position: [
    [{
      rank: '1',

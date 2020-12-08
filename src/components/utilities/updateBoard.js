@@ -17,7 +17,7 @@ const updateBoard = (currentObj, desiredObj, state, setState) =>{
 
     let moves =  addMoveToMatchRecord(piece, currentObj, desiredObj, state.matchRecord);
 
-    setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
+    setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white', pieceClicked: ''});
 
     let winner = gameOverCheck(state)
     if(winner !== 'incomplete'){
