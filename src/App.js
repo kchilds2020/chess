@@ -9,6 +9,7 @@ const App = () => {
    playerColor: 'white',
    turn: 'white',
    pov: 'white',
+   winner: 'incomplete',
    position: [
    [{
      rank: '1',

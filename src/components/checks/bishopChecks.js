@@ -9,7 +9,6 @@ const bishopChecks = (currentObj, desiredObj, state, setState) => {
 
     if(diagonalCollisionChecks(currentObj, desiredObj, state.position) === true) return false;
 
-    console.log('DESIRED  PIECE', desiredObj.piece)
     if(desiredObj.piece.slice(0,5) === currentObj.piece.slice(0,5)) return false;
     
     return true;

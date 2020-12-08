@@ -18,7 +18,6 @@ const horizontalCollisionChecks = (currentObj, desiredObj, posArr) => {
             if(tempObj.piece !== '') return true;
         }
     }
-    console.log(cNum, dNum)
     return false;
 }
 

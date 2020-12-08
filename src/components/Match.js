@@ -13,7 +13,7 @@ function Match() {
 
   return (
     <div className='App'>
-        <h1>Turn: {state.turn}</h1>
+        {state.winner === 'incomplete' ? <h1>Turn: {state.turn}</h1> : <h1>WINNER: {state.winner}</h1>}
         <Container> 
           <Board />
         </Container>
