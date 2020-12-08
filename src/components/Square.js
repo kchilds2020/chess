@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import styled from 'styled-components' 
 import checkValidation from './checks/checkValidation'
 import MatchState from './state/MatchState'
@@ -35,22 +35,48 @@ function Square({ position, updateBoard }) {
         }
     };
  
-    const highlight = (e) => {
+    /* const highlight = (e) => {
         if(position.avSquares){
             highlightAvSquares(position, state, setState)
         }
+    } */
+
+    const placePiece = (e) => {
+        e.preventDefault();
+        console.log(state.pieceClicked, e.target)
     }
 
-    const resetBoard = (e) => {
-        resetBoardColor(state,setState)
+    const movePiece = (e) => {
+        e.preventDefault();
+        
+        if((state.turn === e.target.id.slice(0,5) && state.pieceClicked === '') || (state.turn !== e.target.id.slice(0,5) && state.pieceClicked !== '')){
+            let location = e.target.id.length <= 2 ? e.target.id : e.target.parentElement.id;
+            if(state.pieceClicked === ''){
+                if(position.avSquares){
+                    highlightAvSquares(position, state, setState)
+                }
+                setState({...state, pieceClicked: location});
+            }else{
+                //check validation
+                let desiredObj = findObjectAtLocation(`${location}`, state.position)
+                let currentObj = findObjectAtLocation(state.pieceClicked, state.position)
+                if(checkValidation(currentObj, desiredObj, state, setState) === true){
+                    updateBoard( currentObj, desiredObj, state, setState);
+                }
+            }
+        }
     }
+
+    /* const resetBoard = (e) => {
+        resetBoardColor(state,setState)
+    } */
 
     return (
-        <SquareDiv style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop}>
+        <SquareDiv style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop} onClick = {movePiece}>
                 {position.piece !== '' ? 
                     state.turn === position.piece.slice(0,5) ? 
-                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag} onClick={highlight} /> :
-                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false" onClick={resetBoard}/>
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag} /> :
+                        <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="false"/>
                         : <></>}
         </SquareDiv>
     )
