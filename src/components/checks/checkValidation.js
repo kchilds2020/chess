@@ -4,7 +4,7 @@ import bishopChecks from './bishopChecks'
 import queenChecks from './queenChecks'
 import kingChecks from './kingChecks'
 import knightChecks from './knightChecks'
-import isInCheck from './isInCheck'
+//import isInCheck from './isInCheck'
 
 
 const checkValidation = (currentObj, desiredObj, state, setState) => {
@@ -39,7 +39,7 @@ const checkValidation = (currentObj, desiredObj, state, setState) => {
     if(res === false) return false
 
     //check if in check after piece has been moved
-    if(isInCheck(currentObj,desiredObj, state, setState)) return false
+    //if(isInCheck(currentObj,desiredObj, state, setState)) return false
    
 
     

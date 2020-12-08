@@ -87,7 +87,6 @@ const avPawnSquares = (currentObj,position) => {
             break;
         }
     }
-    console.log('BISHOP AVAIALABLE SQUARES', position,currentObj, tempArr)
     return tempArr
 }
 

@@ -2,6 +2,7 @@ import addMoveToMatchRecord from './addMoveToMatchRecord'
 import availableSquares from './available-squares/availableSquares';
 import resetBoardColor from './resetBoardColors';
 import findLocationFromObject from './findLocationFromObject'
+import gameOverCheck from './gameOverCheck';
 
 const updateBoard = (currentObj, desiredObj, state, setState) =>{
     resetBoardColor(state, setState);
@@ -18,7 +19,10 @@ const updateBoard = (currentObj, desiredObj, state, setState) =>{
 
     setState({...state, position: temp, matchRecord: moves, turn: state.turn === 'white' ? 'black' : 'white'});
 
-    console.log(state)
+    let winner = gameOverCheck(state)
+    if(winner !== 'incomplete'){
+      setState({...state, winner: winner, turn: 'gameover'})
+    }
   }
  
 export default updateBoard

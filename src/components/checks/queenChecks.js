@@ -5,7 +5,6 @@ import findLocationFromObject from '../utilities/findLocationFromObject'
 
 
 const queenChecks = (currentObj, desiredObj, state, setState) => {
-    console.log('horizontal')
     const c = findLocationFromObject(currentObj);
     const d = findLocationFromObject(desiredObj);
 
