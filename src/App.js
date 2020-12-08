@@ -399,6 +399,7 @@ const App = () => {
    }]],
    matchRecord: []
   })
+
   return(
     <MatchState.Provider value={{state, setState}}>
       <Match />
