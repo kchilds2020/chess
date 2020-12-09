@@ -1,11 +1,11 @@
 import addMoveToMatchRecord from './addMoveToMatchRecord'
 import availableSquares from './available-squares/availableSquares';
-import resetBoardColor from './resetBoardColors';
+//import resetBoardColor from './resetBoardColors';
 import findLocationFromObject from './findLocationFromObject'
 import gameOverCheck from './gameOverCheck';
 
 const updateBoard = (currentObj, desiredObj, state, setState) =>{
-    resetBoardColor(state, setState);
+    //resetBoardColor(state, setState);
     let temp = [...state.position];
     const c = findLocationFromObject(currentObj);
     const d = findLocationFromObject(desiredObj);
