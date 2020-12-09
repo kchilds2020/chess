@@ -1,9 +1,9 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components' 
 import checkValidation from './checks/checkValidation'
 import MatchState from './state/MatchState'
-import highlightAvSquares from './utilities/available-squares/highlightAvSquares'
-import resetBoardColor from './utilities/resetBoardColors'
+/* import highlightAvSquares from './utilities/available-squares/highlightAvSquares'
+import resetBoardColor from './utilities/resetBoardColors' */
 import findObjectAtLocation from './utilities/findObjectAtLocation'
 
 function Square({ position, updateBoard }) {
@@ -27,52 +27,45 @@ function Square({ position, updateBoard }) {
 
         if(checkValidation(currentObj, desiredObj, state, setState) === true){
             updateBoard( currentObj, desiredObj, state, setState);
-
-            //update image id
-            /* let row = destinationSquare.id.slice(0,1);
-            let col = destinationSquare.id.slice(1);
-            piece.id = `${position.piece}>${row}${col}` */; 
         }
     };
- 
-    /* const highlight = (e) => {
-        if(position.avSquares){
-            highlightAvSquares(position, state, setState)
-        }
-    } */
-
-    const placePiece = (e) => {
-        e.preventDefault();
-        console.log(state.pieceClicked, e.target)
-    }
 
     const movePiece = (e) => {
         e.preventDefault();
-        
-        if((state.turn === e.target.id.slice(0,5) && state.pieceClicked === '') || (state.turn !== e.target.id.slice(0,5) && state.pieceClicked !== '')){
-            let location = e.target.id.length <= 2 ? e.target.id : e.target.parentElement.id;
-            if(state.pieceClicked === ''){
-                if(position.avSquares){
-                    highlightAvSquares(position, state, setState)
-                }
-                setState({...state, pieceClicked: location});
+        let pClickedObj;
+        let desId = e.target.id.length <= 2 ? e.target.id : e.target.parentElement.id;
+        let desObj = findObjectAtLocation(desId, state.position);
+        //find object of active piece
+        if(state.pieceClicked !== ''){
+            console.log('THERE IS AN ACTIVE PIECE')
+            pClickedObj = findObjectAtLocation(state.pieceClicked, state.position)
+            console.log(pClickedObj)
+            //if another piece of same color is clicked -> update square colors and pieceClickded
+            //else -> if another piece of not the same color or an empty square
+            if(state.turn === desObj.piece.slice(0,5)){
+                console.log('another piece of same color is clicked')
+                setState({...state, pieceClicked: desId});
             }else{
-                //check validation
-                let desiredObj = findObjectAtLocation(`${location}`, state.position)
-                let currentObj = findObjectAtLocation(state.pieceClicked, state.position)
-                if(checkValidation(currentObj, desiredObj, state, setState) === true){
-                    updateBoard( currentObj, desiredObj, state, setState);
+                console.log('opposite color piece is clicked or empty square')
+                if(checkValidation(pClickedObj, desObj, state, setState) === true){
+                    updateBoard( pClickedObj, desObj, state, setState);
+                }else{
+                    setState({...state, pieceClicked: ''});
                 }
+            }
+        //else -> if there isnt a piece clicked yet, verify its the correct turn before assigning
+        }else{
+            console.log('NO PIECE ACTIVE', desObj.piece.slice(0,5), desId)
+            if(state.turn === desObj.piece.slice(0,5)){
+                console.log('TURN = PIECE CLICKED', desId)
+                setState({...state, pieceClicked: desId});
             }
         }
     }
 
-    /* const resetBoard = (e) => {
-        resetBoardColor(state,setState)
-    } */
-
     return (
         <SquareDiv style={{backgroundColor: `${position.squareColor}`}} id={`${position.file}${position.rank}`} className = 'square' onDrop={drop} onDragOver={allowDrop} onClick = {movePiece}>
+                {state.pieceClicked}
                 {position.piece !== '' ? 
                     state.turn === position.piece.slice(0,5) ? 
                         <Img id={`${position.piece}>${position.file}${position.rank}`} src = {require(`../images/${position.piece}.png`)} alt={`${position.piece}`} draggable="true" onDragStart={drag} /> :
